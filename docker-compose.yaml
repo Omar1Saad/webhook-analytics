@@ -5,12 +5,12 @@ services:
     container_name: posrgres_db
     restart: always
     ports:
-      -"5432:5432"
+      - "5432:5432"
     environment:
-      - POSTGRES_USER: ${DB_USERNAME}
-      - POSTGRES_PASSWORD: ${DB_PASSWORD}
-      - POSTGRES_DB: ${DB_DATABASE}
+       POSTGRES_USER: ${DB_USERNAME}
+       POSTGRES_PASSWORD: ${DB_PASSWORD}
+       POSTGRES_DB: ${DB_DATABASE}
     volumes:
-      -postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
