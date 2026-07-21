@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateWebhookDatumDto } from './dto/create-webhook-datum.dto';
 import { UpdateWebhookDatumDto } from './dto/update-webhook-datum.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -8,26 +8,26 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class WebhookDataService {
   constructor(
-    @InjectRepository(WebhookDatum) private whDatumRepo: Repository<WebhookDatum>
+    @InjectRepository(WebhookDatum) private webhookDatumRepo: Repository<WebhookDatum>
   ){}
   async create(createWebhookDatumDto: CreateWebhookDatumDto) {
-    const webhook = await this.whDatumRepo.create(createWebhookDatumDto)
-    return await this.whDatumRepo.save(webhook);
+    try{
+      const webhook = await this.webhookDatumRepo.create(createWebhookDatumDto)
+      return await this.webhookDatumRepo.save(webhook);
+    }catch(error:any){
+      throw new Error(error.message)
+    }
   }
 
-  findAll() {
-    return `This action returns all webhookData`;
+  async findAll() {
+    return await this.webhookDatumRepo.find({
+      order: { created_at: 'DESC' }
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} webhookDatum`;
-  }
-
-  update(id: number, updateWebhookDatumDto: UpdateWebhookDatumDto) {
-    return `This action updates a #${id} webhookDatum`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} webhookDatum`;
+  async findOne(id: string) {
+    const webhook = await this.webhookDatumRepo.findOne({ where: { id }})
+    if(!webhook) throw new NotFoundException(`Webhook with ID ${id} not found`)
+    return webhook;
   }
 }

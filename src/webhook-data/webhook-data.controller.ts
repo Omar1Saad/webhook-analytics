@@ -19,16 +19,6 @@ export class WebhookDataController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.webhookDataService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWebhookDatumDto: UpdateWebhookDatumDto) {
-    return this.webhookDataService.update(+id, updateWebhookDatumDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.webhookDataService.remove(+id);
+    return this.webhookDataService.findOne(id);
   }
 }

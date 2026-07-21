@@ -3,8 +3,8 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 @Entity('webhook_data')
 export class WebhookDatum {
 
-    @PrimaryGeneratedColumn()
-    id!:number
+    @PrimaryGeneratedColumn('uuid')
+    id!:string
 
     @Column()
     eventType!: string
@@ -15,9 +15,9 @@ export class WebhookDatum {
     @Column({type:"date", nullable:true})
     timestamp!: string 
 
-    @CreateDateColumn()
-    created_at!:Date
+    @CreateDateColumn({nullable:true})
+    created_at!:Date|null
 
-    @UpdateDateColumn()
-    updated_at!:Date
+    @UpdateDateColumn({nullable:true})
+    updated_at!:Date|null
 }
