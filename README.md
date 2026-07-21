@@ -1,98 +1,81 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Webhook Analytics Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A production-ready, highly secure, and thoroughly tested NestJS backend service designed to ingest, validate, store, and analyze incoming webhook events efficiently.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Features
 
-## Description
+* **Event Ingestion & Persistence:** Securely captures webhook payloads and stores them using TypeORM and PostgreSQL with optimized JSONB column handling.
+* **Robust Data Validation:** Utilizes class-validator and class-transformation via global validation pipes to sanitize incoming payloads and prevent malicious or malformed requests.
+* **Comprehensive Automated Testing:** Built with a test-first mindset using Jest, achieving high test coverage with rigorous unit testing, mocking strategies, and negative test cases.
+* **Containerized Environment:** Fully dockerized with Docker Engine and Docker Compose, ensuring seamless deployment and database synchronization.
+* **RESTful Architecture:** Clean separation of concerns following NestJS modular architecture.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Project setup
+## 🛠️ Tech Stack
 
-```bash
-$ npm install
-```
+* **Framework:** NestJS (Node.js & TypeScript)
+* **Database & ORM:** PostgreSQL, TypeORM
+* **Testing:** Jest, Supertest
+* **DevOps & Tools:** Docker, Docker Compose, Git / GitHub Actions
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+## 💡 What I Learned & Project Purpose
 
-# watch mode
-$ npm run start:dev
+This project was built as an independent hands-on learning initiative to master enterprise-grade backend development and systems design patterns. Key competencies and engineering practices gained through this project include:
 
-# production mode
-$ npm run start:prod
-```
+* **Advanced NestJS Architecture:** Structuring applications cleanly using modules, controllers, providers, and DTO validation layers.
+* **Database Integration & ORM:** Managing relational databases using TypeORM, configuring entities with PostgreSQL jsonb types, and handling data persistence.
+* **Unit Testing & Mocking with Jest:** Writing robust automated test suites, implementing repository and service mocks, handling dependency injection in test modules, and performing both happy-path and negative/error-handling tests.
+* **Dockerization:** Containerizing Node.js applications alongside multi-container PostgreSQL instances using Docker Compose for reliable local environments.
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## 📁 Project Structure
 
-# e2e tests
-$ npm run test:e2e
+* src/webhook-data/dto/ - Data Transfer Objects & validation rules
+* src/webhook-data/entities/ - TypeORM database models & schemas
+* src/webhook-data/webhook-data.controller.ts - REST API endpoints handlers
+* src/webhook-data/webhook-data.module.ts - NestJS module configuration
+* src/webhook-data/webhook-data.service.ts - Business logic & data manipulation
+* src/app.module.ts - Root application module
+* src/main.ts - Application entry point
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## ⚙️ Getting Started Locally
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Prerequisites
+* Node.js (v18+ recommended)
+* Docker & Docker Compose
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Installation & Setup
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+1. Clone the repository:
+   git clone [https://github.com/your-username/webhook-analytics.git](https://github.com/your-username/webhook-analytics.git)
+   cd webhook-analytics
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+2. Install dependencies:
+   npm install
 
-## Resources
+3. Run PostgreSQL via Docker Compose:
+   docker-compose up -d
 
-Check out a few resources that may come in handy when working with NestJS:
+4. Run the application:
+   npm run start:dev
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+---
 
-## Support
+## 🧪 Running Tests
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+To run the unit tests and check test coverage:
+* Run unit tests: npm run test
+* Run tests with coverage report: npm run test:cov
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 👤 Author
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+**Omar Saad**
+* Software Engineer | Backend & Systems Architecture Enthusiast

@@ -12,12 +12,12 @@ export class WebhookDatum {
     @Column({type:"jsonb"})
     payload!: object
 
-    @Column({type:"date", nullable:true})
+    @Column({type:"date"})
     timestamp!: string 
 
-    @CreateDateColumn({nullable:true})
-    created_at!:Date|null
+    @CreateDateColumn()
+    created_at!:Date
 
-    @UpdateDateColumn({nullable:true})
-    updated_at!:Date|null
+    @UpdateDateColumn()
+    updated_at!:Date
 }

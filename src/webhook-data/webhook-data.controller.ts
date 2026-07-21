@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { WebhookDataService } from './webhook-data.service';
 import { CreateWebhookDatumDto } from './dto/create-webhook-datum.dto';
-import { UpdateWebhookDatumDto } from './dto/update-webhook-datum.dto';
 
 @Controller('webhook-data')
 export class WebhookDataController {

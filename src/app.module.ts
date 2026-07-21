@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WebhookDataModule } from './webhook-data/webhook-data.module';
@@ -25,7 +23,5 @@ import { WebhookDataModule } from './webhook-data/webhook-data.module';
     }),
     WebhookDataModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

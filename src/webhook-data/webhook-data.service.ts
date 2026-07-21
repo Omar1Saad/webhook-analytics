@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateWebhookDatumDto } from './dto/create-webhook-datum.dto';
-import { UpdateWebhookDatumDto } from './dto/update-webhook-datum.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WebhookDatum } from './entities/webhook-datum.entity';
 import { Repository } from 'typeorm';
@@ -26,8 +25,8 @@ export class WebhookDataService {
   }
 
   async findOne(id: string) {
-    const webhook = await this.webhookDatumRepo.findOne({ where: { id }})
-    if(!webhook) throw new NotFoundException(`Webhook with ID ${id} not found`)
+    const webhook = await this.webhookDatumRepo.findOne({ where: { id }});
+    if(!webhook) throw new NotFoundException(`Webhook with ID ${id} not found`);
     return webhook;
   }
 }

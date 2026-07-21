@@ -99,16 +99,16 @@ describe('WebhookDataService', () => {
           eventType:'da',
           payload:{},
           timestamp:'2222',
-          created_at:null,
-          updated_at:null
+          created_at:new Date(),
+          updated_at:new Date()
         },
         {
           id:'mock-uuid-143',
           eventType:'dasa',
           payload:{},
           timestamp:'2223',
-          created_at:null,
-          updated_at:null
+          created_at:new Date(),
+          updated_at:new Date()
         }
       ];
       jest.spyOn(webhookRepoMock, 'find').mockResolvedValue(mockData);
@@ -125,8 +125,8 @@ describe('WebhookDataService', () => {
         eventType:'dqea',
         payload:{},
         timestamp:'2222',
-        created_at:null,
-        updated_at:null
+        created_at:new Date(),
+        updated_at:new Date()
       };
       jest.spyOn(webhookRepoMock, 'findOne').mockResolvedValue(mock);
 
@@ -141,5 +141,5 @@ describe('WebhookDataService', () => {
       expect(webhookRepoMock.findOne).toHaveBeenCalledTimes(1);
     });
   });
-  
+
 });
